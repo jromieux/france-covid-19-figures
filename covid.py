@@ -100,7 +100,7 @@ readCSV = csv.reader(r.content.decode('utf-8').splitlines(), delimiter=CSV_DELIM
 next(readCSV) # skip first line of the file
 for row in readCSV:
     # Get current date
-    y, m, d = [int(x) for x in row[COL_DATE].split('-')] 
+    y, m, d = [int(x) for x in row[COL_DATE].replace('_','-').split('-')] 
     day = date(y, m, d)
     
     if row[COL_SRC_TYPE]==FILTER_SRC_TYPE and row[COL_CODE]==FILTER_CODE and day >= DAY_ZERO:
